@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+    'gatsby-plugin-favicon',
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
@@ -22,6 +23,8 @@ module.exports = {
         name: 'pages',
       },
     },
+   
+
     {
       resolve: 'gatsby-source-filesystem',
       options: {
