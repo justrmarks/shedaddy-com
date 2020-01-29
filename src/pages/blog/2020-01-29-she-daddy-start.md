@@ -31,7 +31,9 @@ While all this was happening, I was also active in Punk/Electronic/DIY music sce
 
 I had these skills and expertise so what happened next wasn't shocking or groundbreaking. I brought my medic kit, earplugs, condoms, strips that detect the presence of Fentanyl and it's analogues, put on my Queerest outfit, and threw everything onto a silver serving tray and danced all night with it. By distributing these supplies and talking with people about harm reduction strategies as a peer in a provocative costume, I made sure that I would be listened to and that if a crisis did occur, I could be the one sober person with the skills to potentially save someone's life.
 
-![She Daddy in a provocative harm reduction costume](/img/IMG_1793.jpeg "An outrageous outfit I wore earlier in my Harm Reduction career") *An outrageous outfit I wore earlier in my Nightlife Harm Reduction career*
+
+
+![She Daddy in a Camp costume -- red tutu, knee high socks, devil horns, face makeup](/img/IMG_1793.jpeg "A costume from early on in my career as a Nightlife Medic")
 
 From there I've only grown! I worked more and more parties, became a figure people recognized and felt comfortable asking questions that pertained to their health and safety. I was not an expert in an ivory tower, but a peer who could present the research and data in a simple way. Much more than that, I've shared my skills, led teams at large scale events with people from all over the world, and trained others in how to serve similar roles in their own communities. 
 
@@ -40,6 +42,7 @@ From there I've only grown! I worked more and more parties, became a figure peop
 Now, as a budding Software engineer, I'm seeking to better disseminate knowledge in the same ways I have in the past, but in communities everywhere through smart and functional Software. She Daddy in 2020 is here to share knowledge that helps us better care for each other. The world is changing fast but we have the means to ending suffering and liberation already in hand. All we need to do is keep extending hands with each other. 
 
 Things you can expect from She Daddy: 
+
 * Trainings
 * Resource sharing
 * Projects that bring together movement workers of all types
@@ -48,5 +51,4 @@ Things you can expect from She Daddy:
 
 I'm so excited to share more, but cheers to you all for now...
 
-
--- SD  
+\-- SD
