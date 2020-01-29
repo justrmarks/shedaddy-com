@@ -34,6 +34,7 @@ I had these skills and expertise so what happened next wasn't shocking or ground
 
 
 ![She Daddy in a Camp costume -- red tutu, knee high socks, devil horns, face makeup](/img/IMG_1793.jpeg "A costume from early on in my career as a Nightlife Medic")
+* A costume from early on in my career as a Nightlife Medic *
 
 From there I've only grown! I worked more and more parties, became a figure people recognized and felt comfortable asking questions that pertained to their health and safety. I was not an expert in an ivory tower, but a peer who could present the research and data in a simple way. Much more than that, I've shared my skills, led teams at large scale events with people from all over the world, and trained others in how to serve similar roles in their own communities. 
 
