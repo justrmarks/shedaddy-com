@@ -11,8 +11,6 @@ tags:
   - Accessibility
   - Communal Care
 ---
-# Background
-
 ## What started as a simple project became something more
 
 It was 2018 and I had been working in several grassroots organizing projects. I was struggling with mental illness, still on rocky ground with living as an out Non-Binary Trans woman, and the stress of academic life was not helping. The empowerment I received by working in the movement was nothing short of life saving. I was living in Ohio at the time, so the main trends in conversation were around the opiate crisis happening around us; people dying not just from a proliferation of fentanyl and carfentanil adulterating drug supplies but of apathy. It was easy for people chide in with "Just say no"'s or "Stay away from the hard drugs", but people never seem to think about what people already dependent on drug use were to do. Especially those who could neither afford nor access competent recovery care because of their financial class or other vectors of marginalization.
@@ -30,8 +28,6 @@ We worked to assemble kits to better distribute Narcan and safe injection suppli
 While all this was happening, I was also active in Punk/Electronic/DIY music scenes in Columbus, Cleveland, and Pittsburgh. In these communities, it especially wasn't uncommon to hear of someone fatally overdosing, especially since Fentanyl and its more potent analogues were showing up in more non-opioid drugs with increasing frequency and these were communities where drug use was common. 
 
 I had these skills and expertise so what happened next wasn't shocking or groundbreaking. I brought my medic kit, earplugs, condoms, strips that detect the presence of Fentanyl and it's analogues, put on my Queerest outfit, and threw everything onto a silver serving tray and danced all night with it. By distributing these supplies and talking with people about harm reduction strategies as a peer in a provocative costume, I made sure that I would be listened to and that if a crisis did occur, I could be the one sober person with the skills to potentially save someone's life.
-
-
 
 ![She Daddy in a Camp costume -- red tutu, knee high socks, devil horns, face makeup](/img/IMG_1793.jpeg "A costume from early on in my career as a Nightlife Medic")
 
