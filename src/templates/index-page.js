@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
+import { kebabCase } from 'lodash'
 
 
 
@@ -79,7 +80,7 @@ export const IndexPageTemplate = ({
         {intro.blurbs.filter(Boolean).map((blurb)=> <section key={blurb.heading}>
             <h4>{blurb.heading}</h4> 
             <p>{blurb.body}</p> 
-            <Link to={"/tags/"+blurb.tagSlug}>Read more...</Link>
+            <Link to={`/tags/${kebabCase(blurb.tag)}`}> Read more about how She Daddy is doing {blurb.tag} </Link>
            
            </section> )}
                     
@@ -146,7 +147,7 @@ export const pageQuery = graphql`
         }
         intro {
           blurbs {
-            tagSlug
+            tag
             heading
             body
           }
