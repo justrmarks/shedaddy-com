@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
+
 
 
 export const IndexPageTemplate = ({
@@ -10,6 +10,7 @@ export const IndexPageTemplate = ({
   heading,
   subheading,
   mainpitch,
+  intro
 }) => (
   <div>
     <div
@@ -55,6 +56,7 @@ export const IndexPageTemplate = ({
         </h3>
       </div>
     </div>
+
     <section className="section section--gradient">
       <div className="container">
         <div className="section">
@@ -74,11 +76,23 @@ export const IndexPageTemplate = ({
                     <h3 className="has-text-weight-semibold is-size-2">
                       {heading}
                     </h3>
+        {intro.blurbs.filter(Boolean).map((blurb)=> <section key={blurb.heading}>
+            <h4>{blurb.heading}</h4> 
+            <p>{blurb.body}</p> 
+            <Link to={"/tags/"+blurb.tagSlug}>Read more...</Link>
+           
+           </section> )}
+                    
                   </div>
+                  
                 </div>
-                
+            
               </div>
+            
             </div>
+
+      
+
           </div>
         </div>
       </div>
@@ -103,6 +117,7 @@ const IndexPage = ({ data }) => {
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
         mainpitch={frontmatter.mainpitch}
+        intro={frontmatter.intro}
       />
     </Layout>
   )
@@ -128,6 +143,13 @@ export const pageQuery = graphql`
         mainpitch {
           title
           description
+        }
+        intro {
+          blurbs {
+            tagSlug
+            heading
+            body
+          }
         }
       }
     }
