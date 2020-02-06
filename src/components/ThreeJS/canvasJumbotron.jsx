@@ -1,10 +1,9 @@
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense } from 'react'
 import { useFrame, Canvas } from 'react-three-fiber'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import Snapdragon from './snapDragon'
 import ThreeErrorBoundry from './ThreeErrorBoundry'
-import { Box } from './models/primitiveMeshes'
-
+import { Box, Plane } from './models/primitiveMeshes'
+import _ from 'lodash'
 
 
 
@@ -13,20 +12,31 @@ import { Box } from './models/primitiveMeshes'
 // component to handle error detection and canvas rendering for 
 // react Three Fiber canvas component
 const CanvasJumbotron = (props)=> {
+
+    const models = []
+    let index=0
+    let position
+    _.times(100, ()=> {
+        position=[Math.floor(Math.random()*45)-5 ,(Math.random()*-35)-25, Math.random()*-30 + 4]
+        console.log(position)
+        models.push(<Snapdragon key={index++} position={position}/>)
+        
+    })
+
+
     return (
-    <div style={{width: '100vh', height: '100vw'}}>
-    <Canvas {...props} camera={{position: [0,5,30]}} >
+    
+    <Canvas {...props} camera={{fov:100,position: [0,0,15]}} style={{height: '100vh', width: '100vw'}}>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <ThreeErrorBoundry>
             <Suspense fallback={<Box />}>
-                <Snapdragon position={[0, 0, 0]} />
-                <Snapdragon position={[0, -2, 0]} />
-                <Snapdragon position={[10, 0, 0]} />
-
+                {models}
+                {/* <Snapdragon position={[8, -10, -8]}/> */}
+                <Box position={[4,0,3]} scale={{height: 500, width: 400, depth: 700}} />
             </Suspense>
         </ThreeErrorBoundry>
     </Canvas>
-    </div> )
+     )
 }
 export default CanvasJumbotron;

@@ -9,9 +9,8 @@ export default function Snapdragon(props) {
   const group = useRef()
   const { nodes, materials } = useLoader(GLTFLoader, 'http://localhost:80/models/snapdragon.gltf')
 
-  console.log(nodes['snapdragonobjcleanermaterialmergergles'].children[0].geometry)
   return (
-      <group ref={group} {...props} dispose={null}>
+      <group ref={group} {...props} dispose={null} scale={props.scale || [1,1,1]}>
         <scene name="OSG_Scene">
           <group name="RootNode_(gltf_orientation_matrix)" rotation={[-Math.PI / 2, 0, 0]}>
             <group name="RootNode_(model_correction_matrix)">
