@@ -1,6 +1,12 @@
-import React from 'react'
-import { Canvas } from 'react-three-fiber'
+import React, { Suspense, useRef } from 'react'
+import { useFrame, Canvas } from 'react-three-fiber'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import Snapdragon from './snapDragon'
+import ThreeErrorBoundry from './ThreeErrorBoundry'
+import { Box } from './models/primitiveMeshes'
+
+
+
 
 
 
@@ -8,12 +14,19 @@ import Snapdragon from './snapDragon'
 // react Three Fiber canvas component
 const CanvasJumbotron = (props)=> {
     return (
-    <Canvas {...props}>
+    <div style={{width: '100vh', height: '100vw'}}>
+    <Canvas {...props} camera={{position: [0,5,30]}} >
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <Snapdragon position={[-1.2, 0, 0]} />
-        <Snapdragon position={[1.2, 0, 0]} />
-        <Snapdragon position={[1.2, 1, -3]} />
-    </Canvas> )
+        <ThreeErrorBoundry>
+            <Suspense fallback={<Box />}>
+                <Snapdragon position={[0, 0, 0]} />
+                <Snapdragon position={[0, -2, 0]} />
+                <Snapdragon position={[10, 0, 0]} />
+
+            </Suspense>
+        </ThreeErrorBoundry>
+    </Canvas>
+    </div> )
 }
 export default CanvasJumbotron;
