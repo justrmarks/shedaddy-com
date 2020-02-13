@@ -22,11 +22,12 @@ export const IndexPageTemplate = ({
       <div
         style={{
           display: 'flex',
-          height: '150px',
+          height: '80%',
           lineHeight: '1',
-          justifyContent: 'space-around',
+          justifyContent: 'space-between',
           alignItems: 'left',
           flexDirection: 'column',
+
         }}
       >
         <h1
@@ -38,11 +39,12 @@ export const IndexPageTemplate = ({
             color: 'white',
             lineHeight: '1',
             padding: '0.25em',
+            alignSelf: 'flex-start'
           }}
         >
           {title}
         </h1>
-        <h3
+        <h2
           className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
           style={{
             boxShadow:
@@ -51,10 +53,11 @@ export const IndexPageTemplate = ({
             color: 'white',
             lineHeight: '1',
             padding: '0.25em',
+            alignSelf: 'flex-end'
           }}
         >
           {subheading}
-        </h3>
+        </h2>
       </div>
     </div>
 
