@@ -18,7 +18,6 @@ const (
 	audienceID = os.Getenv("MAILCHIMP_AUDIENCE_ID") //"acbb592c9e"
 )
 
-struct 
 
 func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
 
@@ -27,12 +26,16 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 
 	list, err := client.GetList(audienceID, nil)
 
+	if (request.HttpMethod !== "POST") {
+		return &events.APIGatewayProxyResponse{StatusCode: 405, Body: "{message: Method Not Allowed}" };
+	  }
+
 	// error handling for mailchimp list retrieval
 	if err != nil {
-		fmt.Fprintf(&b, "{`message`: `error - couldn't find audience list`, `data`: `%s`}", err) 
-		return &events.APIGatewayProxyRequest{
+		fmt.Fprintf(&body, "{`message`: `error - couldn't find audience list`, `data`: `%s`}", err) 
+		return &events.APIGatewayProxyResponse{
 			StatusCode: 500,
-			Body: b.String()
+			Body: body.String()
 		}, nil
 		
 	}
@@ -45,18 +48,18 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 
 	if _, err := list.CreateMember(newSub); err != nil {
 		fmt.Println("Failed to subscribe '%s'", newSub.EmailAddress)
-		fmt.Fprintf(&b, "{`message`: `error - Failed to subscribe`, `data`: `%s`}", err) 
-		return &events.APIGatewayProxyRequest{
+		fmt.Fprintf(&body, "{`message`: `error - Failed to subscribe`, `data`: `%s`}", err) 
+		return &events.APIGatewayProxyResponse{
 			StatusCode: 500,
-			Body: b.String()
+			Body: body.String()
 		}, nil
 	}
 	
 
-	fmt.Fprintf(&b, "{`message`: `success`, `data`: `%s`}", newSub.EmailAddress) 
-	return &events.APIGatewayProxyRequest{
+	fmt.Fprintf(&body, "{`message`: `success`, `data`: `%s`}", newSub.EmailAddress) 
+	return &events.APIGatewayProxyResponse{
 		StatusCode: 200,
-		Body: b.String()
+		Body: body.String()
 	}, nil
 }
 
