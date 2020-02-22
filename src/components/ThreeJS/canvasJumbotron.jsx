@@ -16,8 +16,8 @@ const CanvasJumbotron = (props)=> {
     const models = []
     let index=0
     let position
-    _.times(100, ()=> {
-        position=[Math.floor(Math.random()*45)-5 ,(Math.random()*-35)-25, Math.random()*-30 + 4]
+    _.times(1, ()=> {
+        position=[Math.floor(Math.random()*45)-5 ,(Math.random()*-35)-5, Math.random()*-30 + 4]
         console.log(position)
         models.push(<Snapdragon key={index++} position={position}/>)
         
@@ -25,8 +25,8 @@ const CanvasJumbotron = (props)=> {
 
 
     return (
-    
-    <Canvas {...props} camera={{fov:100,position: [0,0,15]}} style={{height: '100vh', width: '100vw'}}>
+    <div>
+    <Canvas {...props} camera={{fov:80*window.innerWidth/window.innerHeight ,position: [0,0,15]}} style={{height: '100vh', width: '100vw'}}>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <ThreeErrorBoundry>
@@ -37,6 +37,7 @@ const CanvasJumbotron = (props)=> {
             </Suspense>
         </ThreeErrorBoundry>
     </Canvas>
+    </div>
      )
 }
 export default CanvasJumbotron;

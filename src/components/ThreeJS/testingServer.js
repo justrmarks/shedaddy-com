@@ -1,3 +1,5 @@
+// testing server to test serving gltf files in development
+
 var express = require('express')
 var cors = require('cors')
 var app = express()
