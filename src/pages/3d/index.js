@@ -7,7 +7,7 @@ export default class BlogIndexPage extends React.Component {
       return (
         <Layout>
           <div>
-            <CanvasJumbotron />
+            {/* <CanvasJumbotron /> */}
             <h1
               className="has-text-weight-bold is-size-1"
               style={{
