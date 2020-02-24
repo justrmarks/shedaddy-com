@@ -1,7 +1,8 @@
 [build]
   publish = "public"
   command = "npm run build"
-  functions = "gosrc/functions"
+  functions = "lambda"
+  GO_IMPORT_PATH = "./gosrc/functions"
 [build.environment]
   YARN_VERSION = "1.9.4"
   YARN_FLAGS = "--no-ignore-optional"
