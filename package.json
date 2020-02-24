@@ -44,7 +44,7 @@
   "scripts": {
     "clean": "gatsby clean",
     "start": "npm run develop",
-    "build": "npm run clean && gatsby build && GOBIN=${PWD}/lambda go install ./...",
+    "build": "npm run clean && gatsby build && GOBIN=${PWD}/gosrc/functions go install ./...",
     "develop": "npm run clean && gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
