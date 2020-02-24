@@ -1,26 +1,20 @@
 package main
 
 import (
-	"context"
 	"fmt"
+	"net/url"
 	"os"
 	"strings"
-	"net/url"
-
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/hanzoai/gochimp3"
 )
 
-const (
-	apiKey     = os.Getenv("MAILCHIM_API_KEY")
-	audienceID = os.Getenv("MAILCHIMP_AUDIENCE_ID") //"acbb592c9e"
-)
-
-struct 
-
 func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
+
+	apiKey := os.Getenv("MAILCHIMP_API_KEY")
+	audienceID := os.Getenv("MAILCHIMP_AUDIENCE_ID") //"acbb592c9e"
 
 	client := gochimp3.New(apiKey)
 	var body strings.Builder
@@ -29,34 +23,35 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 
 	// error handling for mailchimp list retrieval
 	if err != nil {
-		fmt.Fprintf(&b, "{`message`: `error - couldn't find audience list`, `data`: `%s`}", err) 
-		return &events.APIGatewayProxyRequest{
+		fmt.Fprintf(&body, "{`message`: `error - couldn't find audience list`, `data`: `%s`}", err)
+		return &events.APIGatewayProxyResponse{
 			StatusCode: 500,
-			Body: b.String()
+			Body:       body.String(),
 		}, nil
-		
+
 	}
 
+	vals, err := url.ParseQuery(request.Body)
+	emailAddress := vals["emailAddress"][0]
 	newSub := &gochimp3.MemberRequest{
 		// unmarshall query string into map[string][]string
-        EmailAddress: url.ParseQuery(request.Body)["emailAddress"][0],
-		Status: "subscribed",
+		EmailAddress: emailAddress,
+		Status:       "subscribed",
 	}
 
 	if _, err := list.CreateMember(newSub); err != nil {
 		fmt.Println("Failed to subscribe '%s'", newSub.EmailAddress)
-		fmt.Fprintf(&b, "{`message`: `error - Failed to subscribe`, `data`: `%s`}", err) 
-		return &events.APIGatewayProxyRequest{
+		fmt.Fprintf(&body, "{`message`: `error - Failed to subscribe`, `data`: `%s`}", err)
+		return &events.APIGatewayProxyResponse{
 			StatusCode: 500,
-			Body: b.String()
+			Body:       body.String(),
 		}, nil
 	}
-	
 
-	fmt.Fprintf(&b, "{`message`: `success`, `data`: `%s`}", newSub.EmailAddress) 
-	return &events.APIGatewayProxyRequest{
+	fmt.Fprintf(&body, "{`message`: `success`, `data`: `%s`}", newSub.EmailAddress)
+	return &events.APIGatewayProxyResponse{
 		StatusCode: 200,
-		Body: b.String()
+		Body:       body.String(),
 	}, nil
 }
 
