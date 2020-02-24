@@ -1,4 +1,5 @@
 build:
 	npm run clean 
 	gatsby build
-    GOBIN=${PWD}/lambda go install -i ./gosrc/functions/...
+	mkdir -p functions
+    GOBIN=${PWD}/functions go install -i ./gosrc/functions/...
