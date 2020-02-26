@@ -1,15 +1,25 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"net/url"
 	"os"
-	"strings"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/hanzoai/gochimp3"
 )
+
+// Payload is used to build API response body
+type Payload struct {
+	Message string      `json: "message"`
+	Data    interface{} `json: "data"`
+}
+
+// EmailEvent is used to properly encode email address as a json field
+type EmailEvent struct {
+	Address string `json: "email"`
+}
 
 func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
 
@@ -17,41 +27,58 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 	audienceID := os.Getenv("MAILCHIMP_AUDIENCE_ID") //"acbb592c9e"
 
 	client := gochimp3.New(apiKey)
-	var body strings.Builder
+	var body Payload
 
-	list, err := client.GetList(audienceID, nil)
+	list, getListErr := client.GetList(audienceID, nil)
 
 	// error handling for mailchimp list retrieval
-	if err != nil {
-		fmt.Fprintf(&body, "{`message`: `error - couldn't find audience list`, `data`: `%s`}", err)
+	if getListErr != nil {
+		body = &Payload{
+			Message: `error - couldn't find audience list`,
+			Data:    getListErr,
+		}
+
+		jsonBody, _ := json.Marshal(&body)
 		return &events.APIGatewayProxyResponse{
 			StatusCode: 500,
-			Body:       body.String(),
+			Body:       jsonBody,
 		}, nil
 
 	}
 
-	vals, err := url.ParseQuery(request.Body)
-	emailAddress := vals["emailAddress"][0]
+	var email EmailEvent
+	jsonMarshallErr := json.Unmarshal(request.Body, &email)
+
 	newSub := &gochimp3.MemberRequest{
-		// unmarshall query string into map[string][]string
-		EmailAddress: emailAddress,
+		EmailAddress: email.Address,
 		Status:       "subscribed",
 	}
 
-	if _, err := list.CreateMember(newSub); err != nil {
+	if _, createMemErr := list.CreateMember(newSub); createMemErr != nil {
 		fmt.Println("Failed to subscribe '%s'", newSub.EmailAddress)
-		fmt.Fprintf(&body, "{`message`: `error - Failed to subscribe`, `data`: `%s`}", err)
+		body = &Payload{
+			Message: fmt.Sprintf(`error - failed to subscribe %s`, newSub.EmailAddress),
+			Data:    createMemErr,
+		}
+		jsonBody, _ := json.Marshal(&body)
+
 		return &events.APIGatewayProxyResponse{
 			StatusCode: 500,
-			Body:       body.String(),
+			Body:       jsonBody,
 		}, nil
 	}
 
-	fmt.Fprintf(&body, "{`message`: `success`, `data`: `%s`}", newSub.EmailAddress)
+	body = &Payload{
+		Message: "success",
+		Data: &EmailEvent{
+			Address: newSub.EmailAddress,
+		},
+	}
+	jsonBody, _ := json.Marshal(&body)
+
 	return &events.APIGatewayProxyResponse{
 		StatusCode: 200,
-		Body:       body.String(),
+		Body:       jsonBody,
 	}, nil
 }
 
