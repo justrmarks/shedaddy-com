@@ -47,7 +47,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 	}
 
 	var email EmailEvent
-	jsonMarshallErr := json.Unmarshal(request.Body, &email)
+	jsonMarshallErr := json.Unmarshal([]byte(request.Body), &email)
 
 	newSub := &gochimp3.MemberRequest{
 		EmailAddress: email.Address,
