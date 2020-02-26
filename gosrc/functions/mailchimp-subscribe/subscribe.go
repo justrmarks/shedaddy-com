@@ -27,7 +27,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 	audienceID := os.Getenv("MAILCHIMP_AUDIENCE_ID") //"acbb592c9e"
 
 	client := gochimp3.New(apiKey)
-	var body Payload
+	var body *Payload
 
 	list, getListErr := client.GetList(audienceID, nil)
 
@@ -41,7 +41,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 		jsonBody, _ := json.Marshal(&body)
 		return &events.APIGatewayProxyResponse{
 			StatusCode: 500,
-			Body:       jsonBody,
+			Body:       string(jsonBody),
 		}, nil
 
 	}
@@ -64,7 +64,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 
 		return &events.APIGatewayProxyResponse{
 			StatusCode: 500,
-			Body:       jsonBody,
+			Body:       string(jsonBody),
 		}, nil
 	}
 
@@ -78,7 +78,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 
 	return &events.APIGatewayProxyResponse{
 		StatusCode: 200,
-		Body:       jsonBody,
+		Body:       string(jsonBody),
 	}, nil
 }
 
