@@ -49,6 +49,20 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 	var email EmailEvent
 	jsonMarshallErr := json.Unmarshal([]byte(request.Body), &email)
 
+	if jsonMarshallErr != nil {
+		body = &Payload{
+			Message: `error - couldn't process request json`,
+			Data:    jsonMarshallErr,
+		}
+
+		jsonBody, _ := json.Marshal(&body)
+		return &events.APIGatewayProxyResponse{
+			StatusCode: 500,
+			Body:       string(jsonBody),
+		}, nil
+
+	}
+
 	newSub := &gochimp3.MemberRequest{
 		EmailAddress: email.Address,
 		Status:       "subscribed",
