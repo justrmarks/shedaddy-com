@@ -8,6 +8,7 @@ export default function MailchimpSubscribeForm(props) {
     const handleChange = (e) => { setEmail(e.email.value) }
 
     const handleSubmit = async (e) => { 
+        e.preventDefault();
         setFetching(true)
         req = {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
