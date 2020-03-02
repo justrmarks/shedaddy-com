@@ -15,6 +15,7 @@ const Footer = class extends React.Component {
             alt="She Daddy"
             style={{ width: '16em', height: '12em' }}
           />
+          <p> Subscribe to the Newsletter </p>
           <SubscribeForm />
         </div>
         <div className="content has-text-centered has-background-black has-text-white-ter">

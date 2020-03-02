@@ -36,20 +36,31 @@ $black: #2b2523
     margin-top: 0
 
 .subscribeForm
-  display: inline-block
+  display: flex
+  flex-direction: row
+  align-items: center
+
+  label
+    color: $primary-invert
+    font-weight: bolder
+    font-family: $family-primary
+    
   input
     outline: none
     border: none
-    border-radius-top-left: 2px
-    border-radius-bottom-left: 2px
+    border-radius-top-left: 5%
+    border-radius-bottom-left: 5%
+    padding: 5px
+    font-size: 1.5rem
+    font-family: $family-primary
   input:focus
     outline: 1px solid $primary
   button
     font-family: $family-primary
     background-color: $primary
     border: none
-    border-radius-top-right: 2px
-    border-radius-bottom-right: 2px
+    border-radius-top-right: 5%
+    border-radius-bottom-right: 5%
     color: $primary-invert
     font-weight: bold
   button:disabled
