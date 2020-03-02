@@ -2,8 +2,8 @@ import React, { useState} from 'react'
 
 export default function MailchimpSubscribeForm(props) {
 
-    [email, setEmail] = useState("")
-    [isFetching, setFetching] = useState(false)
+    let [email, setEmail] = useState("")
+    let [isFetching, setFetching] = useState(false)
 
     const handleChange = (e) => { setEmail(e.email.value) }
 
