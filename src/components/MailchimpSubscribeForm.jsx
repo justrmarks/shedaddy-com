@@ -28,7 +28,7 @@ export default function MailchimpSubscribeForm(props) {
 
     return (
         <form onSubmit={handleSubmit} className="subscribeForm">
-            <label name="email">Subscribe to the Newsletter:</label>
+            <label name="email">Newsletter:</label>
             <input type="text" name="email" onChange={handleChange} label="email newsletter subscribe"/>
             <button disabled={isFetching} type="submit"> Subscribe</button>
         </form>

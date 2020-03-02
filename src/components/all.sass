@@ -44,23 +44,26 @@ $black: #2b2523
     color: $primary-invert
     font-weight: bolder
     font-family: $family-primary
-    
+
   input
     outline: none
     border: none
-    border-radius-top-left: 5%
-    border-radius-bottom-left: 5%
+    border-top-left-radius: 5%
+    border-bottom-left-radius: 5%
     padding: 5px
-    font-size: 1.5rem
+    font-size: 1.2rem
     font-family: $family-primary
   input:focus
     outline: 1px solid $primary
+    box-shadow: 5px 10px $primary;
   button
     font-family: $family-primary
     background-color: $primary
+    padding: 5px
+    font-size: 1.2rem
     border: none
-    border-radius-top-right: 5%
-    border-radius-bottom-right: 5%
+    border-top-right-radius: 5%
+    border-bottom-right-radius: 5%
     color: $primary-invert
     font-weight: bold
   button:disabled
