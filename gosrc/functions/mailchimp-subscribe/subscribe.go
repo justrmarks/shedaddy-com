@@ -33,6 +33,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 
 	// error handling for mailchimp list retrieval
 	if getListErr != nil {
+		fmt.Println(getListErr)
 		body = &Payload{
 			Message: `error - couldn't find audience list`,
 			Data:    getListErr,
