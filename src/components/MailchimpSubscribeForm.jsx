@@ -10,7 +10,7 @@ export default function MailchimpSubscribeForm(props) {
     const handleSubmit = async (e) => { 
         e.preventDefault();
         setFetching(true)
-        req = {
+        const req = {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 headers: {
                   'Content-Type': 'application/json'
@@ -21,21 +21,19 @@ export default function MailchimpSubscribeForm(props) {
        let response = await fetch("/.netlify/functions/hello", req)
         let json = response.json()
         console.log(json)
-       if (json.email = email) {
+       if (json.email === email) {
            setFetching(false)
        }
     }
 
     return (
         <form onSubmit={handleSubmit} className="subscribeForm">
-            <label name="email">Newsletter:</label>
-            <input type="text" name="email" onChange={handleChange} label="email newsletter subscribe"/>
+            <label htmlFor="email">Newsletter:</label>
+            <input type="text" id="email" name="email" onChange={handleChange} aria-label="email newsletter subscribe form"/>
             <button disabled={isFetching} type="submit"> Subscribe</button>
         </form>
     )
 
 
-    style = {
-        
-    }
+    
 }
