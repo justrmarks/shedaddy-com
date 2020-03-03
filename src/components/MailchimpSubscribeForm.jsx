@@ -5,7 +5,7 @@ export default function MailchimpSubscribeForm(props) {
     let [email, setEmail] = useState("")
     let [isFetching, setFetching] = useState(false)
 
-    const handleChange = (e) => { setEmail(e.email.value) }
+    const handleChange = (e) => { setEmail(e.value) }
 
     const handleSubmit = async (e) => { 
         e.preventDefault();
