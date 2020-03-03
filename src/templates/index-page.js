@@ -16,8 +16,8 @@ export const IndexPageTemplate = ({
   <div>
     <div
       className="full-width-image margin-top-0"
-      // style={{backgroundColor: "#ffee00"
-      // }}
+      style={{backgroundColor: "#ffee00"
+      }}
     >
       {/* inside jumbotron*/}
       <div
