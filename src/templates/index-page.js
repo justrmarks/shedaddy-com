@@ -5,19 +5,19 @@ import Layout from '../components/Layout'
 import { kebabCase } from 'lodash'
 
 
-
 export const IndexPageTemplate = ({
   title,
   heading,
   subheading,
   mainpitch,
   intro
-}) => (
+}) => {
+  return (
   <div>
     <div
       className="full-width-image margin-top-0"
-      style={{backgroundColor: "#ffee00"
-      }}
+      // style={{backgroundColor: "#ffee00"
+      // }}
     >
       {/* inside jumbotron*/}
       <div
@@ -28,6 +28,7 @@ export const IndexPageTemplate = ({
           justifyContent: 'space-between',
           alignItems: 'left',
           flexDirection: 'column',
+          zIndex: 2
 
         }}
       >
@@ -103,7 +104,7 @@ export const IndexPageTemplate = ({
       </div>
     </section>
   </div>
-)
+)}
 
 IndexPageTemplate.propTypes = {
   title: PropTypes.string,

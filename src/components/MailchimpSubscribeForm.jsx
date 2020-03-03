@@ -18,7 +18,7 @@ export default function MailchimpSubscribeForm(props) {
                 body: `${{email}}` // body data type must match "Content-Type" header
               
         }
-       let response = await fetch("/.netlify/functions/hello", req)
+       let response = await fetch("/.netlify/functions/subscribe", req)
         let json = response.json()
         console.log(json)
        if (json.email === email) {
