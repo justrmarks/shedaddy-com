@@ -2,11 +2,12 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"testing"
 )
 
 func TestEmailEvent(t *testing.T) {
-
+	fmt.Println("Testing EmailEvent")
 	body := `{"email": "example@example.com"}`
 
 	var email *EmailEvent
@@ -21,4 +22,5 @@ func TestEmailEvent(t *testing.T) {
 		t.Errorf("Incorrect Unmarshal, got: %s, want: example@example.com", email.Address)
 
 	}
+	fmt.Println("**Email Unmarshal pass!**")
 }
