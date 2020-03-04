@@ -70,7 +70,8 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 	}
 
 	if _, createMemErr := list.CreateMember(newSub); createMemErr != nil {
-		fmt.Println("Failed to subscribe '%s'", newSub.EmailAddress)
+		fmt.Printf("Failed to subscribe '%s'", newSub.EmailAddress)
+		fmt.Print(newSub)
 		body = &Payload{
 			Message: fmt.Sprintf(`error - failed to subscribe %s`, newSub.EmailAddress),
 			Data:    createMemErr,
