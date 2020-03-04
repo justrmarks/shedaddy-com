@@ -12,13 +12,13 @@ import (
 
 // Payload is used to build API response body
 type Payload struct {
-	Message string      `json: "message"`
-	Data    interface{} `json: "data"`
+	Message string      `json:"message"`
+	Data    interface{} `json:"data"`
 }
 
 // EmailEvent is used to properly encode email address as a json field
 type EmailEvent struct {
-	Address string `json: "email"`
+	Address string `json:"email"`
 }
 
 func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
