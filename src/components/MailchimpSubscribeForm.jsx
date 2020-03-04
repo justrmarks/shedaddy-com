@@ -5,7 +5,7 @@ export default function MailchimpSubscribeForm(props) {
     let [email, setEmail] = useState("")
     let [isFetching, setFetching] = useState(false)
 
-    const handleChange = (e) => { setEmail(e.value) }
+    const handleChange = (e) => { setEmail(e.target.value) }
 
     const handleSubmit = async (e) => { 
         e.preventDefault();
@@ -15,9 +15,10 @@ export default function MailchimpSubscribeForm(props) {
                 headers: {
                   'Content-Type': 'application/json'
                 },
-                body: `${{email}}` // body data type must match "Content-Type" header
+                body: JSON.stringify({email}) // body data type must match "Content-Type" header
               
         }
+
         console.log(req)
        let response = await fetch("/.netlify/functions/subscribe", req)
        console.log(response)
