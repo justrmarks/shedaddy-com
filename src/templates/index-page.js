@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import { kebabCase } from 'lodash'
+import InViewSketch from '../components/p5sketches/intersectObserverSketch'
+import { sketch } from '../components/p5sketches/coloredNoise-p5-wrapper'
 
 
 export const IndexPageTemplate = ({
@@ -14,14 +16,19 @@ export const IndexPageTemplate = ({
 }) => {
   return (
   <div>
+
     <div
       className="full-width-image margin-top-0"
-      style={{backgroundColor: "#ffee00"
+      style={{backgroundColor: "#ccc", 
+      position: 'relative'
       }}
     >
       {/* inside jumbotron*/}
+      <InViewSketch sketch={sketch} className="inViewSketch" style={{zIndex: '1',width: '100%', height: '100%', position: 'absolute'}}/>
+
       <div
         style={{
+          position: 'absolute',
           display: 'flex',
           height: '80%',
           lineHeight: '1',
@@ -41,7 +48,8 @@ export const IndexPageTemplate = ({
             color: 'white',
             lineHeight: '1',
             padding: '0.25em',
-            alignSelf: 'flex-start'
+            alignSelf: 'flex-start',
+            zIndex: 2
           }}
         >
           {title}
@@ -55,7 +63,8 @@ export const IndexPageTemplate = ({
             color: 'white',
             lineHeight: '1',
             padding: '0.25em',
-            alignSelf: 'flex-end'
+            alignSelf: 'flex-end',
+            zIndex: 2
           }}
         >
           {subheading}

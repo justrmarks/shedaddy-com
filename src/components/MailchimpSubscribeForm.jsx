@@ -4,6 +4,7 @@ export default function MailchimpSubscribeForm(props) {
 
     let [email, setEmail] = useState("")
     let [isFetching, setFetching] = useState(false)
+    let [isSubscribed, setSubscribed] = useState(false)
 
     const handleChange = (e) => { setEmail(e.target.value) }
 
@@ -24,8 +25,8 @@ export default function MailchimpSubscribeForm(props) {
        console.log(response)
         let json = await response.json()
         console.log(json)
-       if (json.email === email) {
-           setFetching(false)
+       if (json.email.data === email) {
+           setSubscribed(true)
        }
     }
 
@@ -33,7 +34,7 @@ export default function MailchimpSubscribeForm(props) {
         <form onSubmit={handleSubmit} className="subscribeForm">
             <label htmlFor="email">Newsletter:</label>
             <input type="text" id="email" name="email" onChange={handleChange} aria-label="email newsletter subscribe form"/>
-            <button disabled={isFetching} type="submit"> Subscribe</button>
+            <button disabled={isFetching} type="submit"> {isSubscribed ? "Subscribed!" : "Subscribe"}</button>
         </form>
     )
 
