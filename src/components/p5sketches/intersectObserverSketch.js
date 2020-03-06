@@ -12,7 +12,7 @@ const InViewSketch = ({sketch, style, className}) => {
   })
   const [containerRef, containerSize] = useDimensions(); 
   
-  if (inView && containerSize) {
+  if (inView && containerSize && window) {
       return (
           <div ref={containerRef} style={style} className={className}>
               <div ref={p5ref}>
