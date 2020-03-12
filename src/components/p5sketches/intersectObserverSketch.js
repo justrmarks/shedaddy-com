@@ -1,7 +1,7 @@
 import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import useDimensions from "react-use-dimensions";
-import {loadableP5 as P5Wrapper} from './loadableP5'
+import {loadableP5 as P5Wrapper} from './loadable-p5'
 
 
 
