@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import useDimensions from "react-use-dimensions";
-import  P5Wrapper  from 'react-p5-wrapper'
+import {loadableP5 as P5Wrapper} from './loadableP5'
 
 
 
@@ -12,7 +12,7 @@ const InViewSketch = ({sketch, style, className}) => {
   })
   const [containerRef, containerSize] = useDimensions(); 
   
-  if (inView && containerSize && window) {
+  if (inView && containerSize) {
       return (
           <div ref={containerRef} style={style} className={className}>
               <div ref={p5ref}>
