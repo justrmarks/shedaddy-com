@@ -40,7 +40,7 @@
     "react-p5-wrapper": "^2.0.0",
     "react-three-fiber": "^4.0.14",
     "react-use-dimensions": "^1.2.1",
-    "three": "^0.113.2",
+    "three": "^0.137.0",
     "uuid": "^3.2.1"
   },
   "keywords": [
