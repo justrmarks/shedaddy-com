@@ -1,23 +1,38 @@
 import React from 'react'
-import { useInView } from 'react-intersection-observer'
+
+import { lazy, Suspense } from 'react';
+
 import useDimensions from "react-use-dimensions";
-import {ReactP5Wrapper as P5Wrapper} from 'react-p5-wrapper';
+
 import FramerTile from '../animate/FramerTile';
 
+const P5Wrapper = React.lazy(() => 
+  import('react-p5-wrapper').then(module => ({
+    default: module.ReactP5Wrapper
+  }))
+)
 
 const InViewSketch = ({sketch, style, className}) => {
 
   const [containerRef, containerSize] = useDimensions(); 
 
+  const isSSR = typeof window === "undefined";
+
+
   
-  if (containerSize) {
-      return (
-          <div ref={containerRef} style={style} className={`inViewSketchContainer ${className}`}>
+  if (containerSize && typeof window != 'undefined') {
+      return ( <>{!isSSR && <div ref={containerRef} style={style} className={`inViewSketchContainer ${className}`}>
               <FramerTile>
-                <P5Wrapper  sketch={sketch} parentSize={containerSize} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <P5Wrapper sketch={sketch} parentSize={containerSize} />
+              </Suspense>
               </FramerTile>
-          </div>
-      ) }
+          </div> }</>
+      ) 
+    }
+      else {
+        <div> Loading...</div>
+      }
 
   }
 

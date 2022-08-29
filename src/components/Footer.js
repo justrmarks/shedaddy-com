@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import logo from '../img/logo-invert.svg'
-import instagram from '../img/social/instagram.svg'
+// import instagram from '../img/social/instagram.svg'
 import SubscribeForm from './MailchimpSubscribeForm'
 
 import '../styles/components/footer.scss'

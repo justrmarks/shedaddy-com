@@ -24,7 +24,7 @@ p.updateWithProps = function ({parentSize}) {
     if (canvas && parentSize){
         const {height, width} = parentSize
 
-        if (height != canvas.height || width != canvas.width) {
+        if (height !== canvas.height || width !== canvas.width) {
             p.resizeCanvas(width, height)
             particles = new ParticleSystem(canvas.width, canvas.height, canvas.width / 20 ,p)
         }
@@ -53,8 +53,6 @@ class ParticleSystem {
         for( let x = 0; x < xBound; x+=this.particleSize+this.particleSize/this.xSpacing) {
 
             for(let y = 0; y < yBound; y+=this.particleSize+this.particleSize/this.ySpacing) {
-                const p = Math.random();
-
                 this.addParticle(x,y)
             }
         }
@@ -108,9 +106,9 @@ class Particle {
 
         this.makeShape = () => { 
 
-            if (shape == 'circle') { 
+            if (shape === 'circle') { 
 
-                let even = index % 2 == 0
+                let even = index % 2 === 0
                 p5.stroke(200)
                 let delta = (Math.sin((this.t *100) * Math.PI / 180) ) * 70;
                 // console.log(delta, 'delta')
