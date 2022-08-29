@@ -4,6 +4,7 @@ import logo from '../img/logo-invert.svg'
 import instagram from '../img/social/instagram.svg'
 import SubscribeForm from './MailchimpSubscribeForm'
 
+import '../styles/components/footer.scss'
 
 const Footer = class extends React.Component {
   render() {
@@ -34,7 +35,7 @@ const Footer = class extends React.Component {
                         About
                       </Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         className="navbar-item"
                         href="/admin/"
@@ -43,7 +44,7 @@ const Footer = class extends React.Component {
                       >
                         Admin
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </section>
               </div>
@@ -63,7 +64,7 @@ const Footer = class extends React.Component {
                   </ul>
                 </section>
               </div>
-              <div className="column is-4 social">
+              {/* <div className="column is-4 social">
                 <a title="instagram" href="https://instagram.com/a.nice.lady">
                   <img
                     src={instagram}
@@ -72,7 +73,7 @@ const Footer = class extends React.Component {
                   />
                 </a>
                 
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

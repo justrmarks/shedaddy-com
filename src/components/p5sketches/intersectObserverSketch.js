@@ -1,32 +1,24 @@
 import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import useDimensions from "react-use-dimensions";
-import {loadableP5 as P5Wrapper} from './loadable-p5'
-
+import {ReactP5Wrapper as P5Wrapper} from 'react-p5-wrapper';
+import FramerTile from '../animate/FramerTile';
 
 
 const InViewSketch = ({sketch, style, className}) => {
-  const [p5ref, inView] = useInView({
-    /* Optional options */
-    threshold: 0,
-  })
+
   const [containerRef, containerSize] = useDimensions(); 
+
   
-  if (inView && containerSize) {
+  if (containerSize) {
       return (
-          <div ref={containerRef} style={style} className={className}>
-              <div ref={p5ref}>
+          <div ref={containerRef} style={style} className={`inViewSketchContainer ${className}`}>
+              <FramerTile>
                 <P5Wrapper  sketch={sketch} parentSize={containerSize} />
-              </div>
+              </FramerTile>
           </div>
       ) }
-    else {
-        return (
-            <div ref={containerRef} style={style} className={className}>
-                <div ref={p5ref} className="notInView"></div>
-            </div>
-        )
-    }
+
   }
 
 

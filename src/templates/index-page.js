@@ -7,7 +7,13 @@ import InViewSketch from '../components/p5sketches/intersectObserverSketch'
 import { sketch } from '../components/p5sketches/coloredNoise-p5-wrapper'
 
 
-export const IndexPageTemplate = ({
+import FramerTile from '../components/animate/FramerTile';
+
+
+import "../styles/home.scss"
+
+
+const IndexPageTemplate = ({
   title,
   heading,
   subheading,
@@ -15,88 +21,107 @@ export const IndexPageTemplate = ({
   intro
 }) => {
   return (
-  <div>
+  <div className='index-page'>
 
-    <div
-      className="full-width-image margin-top-0"
-      style={{backgroundColor: "#ccc", 
-      position: 'relative'
-      }}
-    >
-      {/* inside jumbotron*/}
-      <InViewSketch sketch={sketch} className="inViewSketch" style={{zIndex: '1',width: '100%', height: '100%', position: 'absolute'}}/>
-
+    <FramerTile>
       <div
+        className="index__jumbotron full-width-image margin-top-0"
         style={{
-          position: 'absolute',
-          display: 'flex',
-          height: '80%',
-          lineHeight: '1',
-          justifyContent: 'space-between',
-          alignItems: 'left',
-          flexDirection: 'column',
-          zIndex: 2
-
+          // backgroundColor: "#111", 
+        position: 'relative',
+        width: '80%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
         }}
       >
-        <h1
-          className="is-title has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-            alignSelf: 'flex-start',
-            zIndex: 2
-          }}
+        {/* inside jumbotron*/}
+        <InViewSketch sketch={sketch} className="inViewSketch" 
+        style={{zIndex: '1',
+        // width: '400px', 
+        height: '400px', 
+        // position: 'absolute'
+      }}
+        />
+
+        <div className='jumbotron__text'
+          // style={{
+          //   position: 'absolute',
+          //   display: 'flex',
+          //   height: '80%',
+          //   lineHeight: '1',
+          //   justifyContent: 'space-between',
+          //   alignItems: 'left',
+          //   flexDirection: 'column',
+          //   zIndex: 2
+
+          // }}
         >
-          {title}
-        </h1>
-        <h2
-          className="has-text-weight-semibold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-            alignSelf: 'flex-end',
-            zIndex: 2
-          }}
-        >
-          {subheading}
-        </h2>
+          <h1
+            className="is-title has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+            style={{
+              // boxShadow:'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
+              // backgroundColor: '#F06597',
+              color: 'white',
+              lineHeight: '1',
+              padding: '0.25em',
+              alignSelf: 'flex-start',
+              zIndex: 2
+            }}
+          >
+            {title}
+          </h1>
+          <h2
+            className="has-text-weight-semibold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+            style={{
+              // boxShadow:'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
+              // backgroundColor: '#F06597',
+              color: 'white',
+              lineHeight: '1',
+              padding: '0.25em',
+              alignSelf: 'flex-end',
+              zIndex: 2
+            }}
+          >
+            {subheading}
+          </h2>
+        </div>
       </div>
-    </div>
+    </FramerTile>
 
     <section className="section section--gradient">
-      <div className="container">
+      <div className="content__container content">
         <div className="section">
           <div className="columns">
             <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
+              <div className="content content__outer">
+
+                <FramerTile>
+                  <div className="content content__inner">
+                    <div className="tile">
+                      <h1 className="title">{mainpitch.title}</h1>
+                    </div>
+
+                    <div className="tile">
+                      <h3 className="subtitle">{mainpitch.description}</h3>
+                    </div>
+
                   </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
-                  </div>
-                </div>
+                </FramerTile>
+
+
                 <div className="columns">
                   <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-        {intro.blurbs.filter(Boolean).map((blurb)=> <section key={blurb.heading}>
+                    <FramerTile>
+                      <h3 className="has-text-weight-semibold is-size-3">
+                        {heading}
+                      </h3>
+                    </FramerTile>
+        {intro.blurbs.filter(Boolean).map((blurb, i)=> <FramerTile key={`blurb-${i}`}><section key={blurb.heading}>
             <h4>{blurb.heading}</h4> 
             <p>{blurb.body}</p> 
             <Link to={`/tags/${kebabCase(blurb.tag)}`}> Read more about how She Daddy is doing {blurb.tag} </Link>
            
-           </section> )}
+           </section> </FramerTile>)}
                     
                   </div>
                   

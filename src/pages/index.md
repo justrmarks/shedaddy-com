@@ -2,10 +2,10 @@
 templateKey: index-page
 title: She Daddy
 heading: She Daddy is working to bridge communities to create strong projects
-subheading: Re-imagining communal care and accessibility by bridging Tech, Peer to Peer education, and grassroots organizing
+subheading: Queer design and engineering centering creativity, empathy, and curiosity
 mainpitch:
-  title: She Daddy is re-defining how we keep our spaces safe and universal
-  description: For the most marginalized communities, we can't wait for Society to notice our sufferings, our concerns, our traumas. We need survival now. We need the means to thrive now. We can't just wait for revolution, we need be revolutionary NOW. This means bringing people with the tools and knowledge to the people taking action. She Daddy is hopefully one means to this end. Sharing knowledge and tools not as an expert, but as an individual committed to creating better communities today through coalition. 
+  title: The personal is communal
+  description: Nothing happens in a vaccuum. All of us work, live, and play in a field of associations and relationships. Why limit our potential by relegating our action inside the boxes of work and play when the real transformitive work is often a mix of both.
 intro:
   blurbs: 
     - tag: "Harm Reduction"
