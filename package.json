@@ -1,7 +1,7 @@
 {
   "name": "gatsby-starter-netlify-cms",
   "description": "Portfolio site for Justice Marks",
-  "version": "1.0",
+  "version": "1.9.0",
   "author": "Justice Marks",
   "dependencies": {
     "@loadable/babel-plugin": "^5.13.2",
