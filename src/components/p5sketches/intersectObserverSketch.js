@@ -6,7 +6,7 @@ import useDimensions from "react-use-dimensions";
 
 import FramerTile from '../animate/FramerTile';
 
-const P5Wrapper = React.lazy(() => 
+const P5Wrapper = lazy(() => 
   import('react-p5-wrapper').then(module => ({
     default: module.ReactP5Wrapper
   }))

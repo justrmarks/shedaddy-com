@@ -24,6 +24,13 @@ p.updateWithProps = function ({parentSize}) {
     if (canvas && parentSize){
         const {height, width} = parentSize
 
+        console.log("height",height)
+        console.log("width",width)
+
+        console.log("canvas.height",canvas.height)
+        console.log("canvas.width",canvas.width)
+
+
         if (height !== canvas.height || width !== canvas.width) {
             p.resizeCanvas(width, height)
             particles = new ParticleSystem(canvas.width, canvas.height, canvas.width / 20 ,p)
