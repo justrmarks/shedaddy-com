@@ -21,13 +21,15 @@ const InViewSketch = ({sketch, style, className}) => {
 
   
   if (containerSize && typeof window != 'undefined') {
-      return ( <>{!isSSR && <div ref={containerRef} style={style} className={`inViewSketchContainer ${className}`}>
+      return ( <>
               <FramerTile>
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div className="suspenseLoading">Loading...</div>}>
+              <div ref={containerRef} style={style} className={`inViewSketchContainer ${className}`}>
                 <P5Wrapper sketch={sketch} parentSize={containerSize} />
+              </div>
               </Suspense>
               </FramerTile>
-          </div> }</>
+          </>
       ) 
     }
       else {
