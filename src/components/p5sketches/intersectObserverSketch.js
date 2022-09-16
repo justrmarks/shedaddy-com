@@ -16,9 +16,6 @@ const InViewSketch = ({sketch, style, className}) => {
 
   const [containerRef, containerSize] = useDimensions(); 
 
-  const isSSR = typeof window === "undefined";
-
-
   
   if (containerSize && typeof window != 'undefined') {
       return ( <>
